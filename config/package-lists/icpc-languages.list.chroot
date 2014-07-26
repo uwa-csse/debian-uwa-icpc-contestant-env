@@ -1,0 +1,5 @@
+build-essential
+openjdk-7-jdk
+python3
+mono-gmcs
+mono-runtime

@@ -1,0 +1,28 @@
+#!/bin/sh
+
+set -e
+
+case "$(dpkg --print-architecture)" in
+	amd64)
+		_LINUX_FLAVOURS="amd64"
+		_SOURCE="false"
+		;;
+
+	i386)
+		_LINUX_FLAVOURS="486 686-pae"
+		_SOURCE="false"
+		;;
+esac
+
+lb config noauto \
+	--clean \
+	--ignore-system-defaults \
+	--mode debian \
+	--debian-installer false \
+	--memtest none \
+	--apt aptitude \
+	--bootappend-live "boot=live noconfig=debian-installer-launcher quiet splash live-config.hostname=contestant live-config.username=contestant live-config.user-fullname=Contestant live-config.timezone=Australia/Perth live-config.noroot" \
+	--linux-flavours "${_LINUX_FLAVOURS}" \
+	--linux-packages "linux-image linux-headers" \
+	--source "${_SOURCE}" \
+"${@}"
