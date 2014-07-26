@@ -119,6 +119,6 @@ Divide a USB stick into two partitions:
 1. A FAT32 partition to store the read-only Live USB environment. Size accordingly.
 2. An ext4 partition to store persistent data. The label for the partition must be `persistence`.
 
-Use an appropriate tool to create a bootable Live USB using the first partition, e.g. unetbootin (Linux) or Universal USB Installer (Windows). One the bootable Live USB is created, on the Live USB partition edit the file `isolinux/live.cfg` and add the `persistence` option to the end of the `append` line.
+Use an appropriate tool to create a bootable Live USB using the first partition, e.g. unetbootin (Linux) or Universal USB Installer (Windows). Once the bootable Live USB is created, on the Live USB partition edit the file `isolinux/live.cfg` and add the `persistence` option to the end of the `append` line.
 
 On the root of the persistence partition, create a file called `persistence.conf`. This configures which directories on the Live USB will be persistent. See `man persistence.conf` for more details.
